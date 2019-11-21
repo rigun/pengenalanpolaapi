@@ -52,15 +52,12 @@ class Preprobase:
         return True
     
     def cropresize(self,original_image):
-        (x, y, w, h, c) = self.detectFace(original_image)
-        if (w > h):
-            h = w
-        else:
-            w = h
-        newC = int((x+x+w)/2)
-        diffC = newC - c
-        x = x - diffC
-        image = original_image[int(y):int(y)+int(w), int(x):int(x)+int(h)]
+        (column, row, width, height, cx, cy) = self.detectFace(original_image)
+        height = width
+        newCY = int((row +row+height)/2)
+        diffCY = newCY - cy
+        row = row - diffCY
+        image = original_image[int(row):int(row)+int(width), int(column):int(column)+int(height)]
         resized = cv.resize(image, (224, 224))
         cv.imwrite(basePath+'/model/result.jpg', resized)
         reshapeImg = resized.reshape(1,224,224,3)

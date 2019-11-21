@@ -25,10 +25,10 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pengenalanpola'
 basePath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-try:
-    train = Trainbase()
-except Exception as e:
-    train = []
+# try:
+train = Trainbase()
+# except Exception as e:
+    # train = []
 
 prepro = Preprobase()
 mysql = MySQL(app)
